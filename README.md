@@ -15,4 +15,17 @@ INFO[0003] trying to upload file to sftp /pub/incoming/2021-1125-369000
 19228160 bytes copied
 ```
 
+### How to collect Juniper log ###
+1. capture /var/log
+```
+start shell user root
+tar -zcvf /var/tmp/varlog-mem0.tar.gz /var/log/*
+```
+2. copy a coredump from a junos host
+```
+start shell user root
+request app-engine host-shell
+request app-engine file-copy from-jhost erequest app-engine file-copy from-jhost e01.aaa-node.dcpfe.9765.1638630532.core.tgz to-vjunos /var/tmp/ crash
+and find your file in /var/tmp/
+```
 # Credit goes to [http://networkbit.ch/golang-sftp-client/]
